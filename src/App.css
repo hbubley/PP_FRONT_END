@@ -1,38 +1,226 @@
-.App {
-  text-align: center;
+body {
+  padding-bottom: 60px;
+  }
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dropdown-user .nav-link {
+    color: #444 !important;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.dropdown-user .nav-link:hover {
+    color: #222 !important;
+    background: #f2f2f2;
+}
+  
+  .bg-tab-content {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  }
+  
+  .content {
+  padding: 15px 23px 15px;
+  overflow: hidden;
+  position: relative;
+  }
+  
+  @media (min-width: 1200px) {
+  .bg-white.self-service-container {
+      margin-right: 10%;
+      margin-left: 10%;
+  }
+  }
+  
+  .questions {
+  transition: height .5s ease;
+  min-height: 250px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  }
+  
+  .question {
+  position: absolute;
+  left: 120%;
+  width: 100%;
+  top: 0;
+  opacity: 0;
+  min-height: 250px;
+  }
+  
+  .question.animating {
+  transition: left .5s ease, opacity .25s ease;
+  }
+  
+  .question.previous {
+  left: -120%;
+  }
+  
+  .question.active {
+  left: 0;
+  opacity: 1;
+  }
+  
+  .submit {
+  display: none;
+  }
+  
+  .back-next-controls {
+  display: block;
+  margin-top: 20px;
+  }
+  
+  .breadcrumb {
+  background: #fff;
+  margin: 0;
+  }
+  
+  .breadcrumb-item.active {
+  color: #222;
+  }
+  
+  /* .hidden {
+  display: none !important;
+  } */
+  
+  .btn-highlight,
+  .btn-highlight:active,
+  .btn-highlight:focus {
+  border: 2px solid #69b5f7;
+  }
+  
+  @media (min-width: 500px) {
+  .back-next-controls {
+      display: inline-block;
+      margin-top: 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bg-white {
+    background: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.badge-info {
+    background-color: #9F86FF;
+}
+.badge-info[href]:hover,
+.badge-info[href]:focus {
+    background-color: #7753ff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bg-tab-content {
+    border: 1px solid #dee2e6;
+    border-top: none;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,0.02);
+    border-radius: 0 0 6px 6px;
+}
+
+.loader {
+  position: fixed;
+  z-index: 9999999999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.loader img {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loader img.spin {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+#drift-widget-container {
+    z-index: 1039 !important;
+}
+
+.staging-banner {
+    background-size: auto auto;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 238, 1, .5) 10px, rgba(255, 238, 1, .5) 20px );
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(1620deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(1620deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(1620deg); transform:rotate(1620deg); } }
+
+.container > .tab-content {
+    padding: 15px 10px 20px !important;
+}
+
+.container {
+    max-width: 1300px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.secondary-nav .nav-link {
+    border-radius: 0;
+    border-bottom: 3px solid #fff;
+}
+
+.secondary-nav .nav-link:hover {
+    border-bottom: 3px solid #007bff2e;
+}
+
+.secondary-nav .nav-link.active {
+    background: #fff;
+    color: #444;
+    border-bottom: 3px solid #007bff;
+}
+
+.print-only {
+    display: none !important;
+}
+
+.footer-logo {
+    filter: grayscale(1); 
+    opacity: .6;
+    transition: opacity .5s ease, filter .5s ease;
+}
+
+.footer-logo:hover {
+    filter: none; 
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    body > .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .container > .tab-content {
+        padding: 12px 20px 20px !important;
+    }
+}
+
+@media (min-width: 1330px) {
+    body > .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media print {
+    .print-only {
+        display: block !important;
+    }
+
+    .hide-for-print {
+        display: none;
+    }
+}
+
+
+.nav-tabs {
+    border-bottom: none;
 }

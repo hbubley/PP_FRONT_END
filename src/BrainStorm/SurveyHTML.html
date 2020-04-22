@@ -1,0 +1,202 @@
+<div class="container">
+        
+
+        
+    <div class="self-service-container">
+    
+    
+
+    
+    </div>
+    
+    
+<style>
+body {
+padding-bottom: 60px;
+}
+
+.bg-tab-content {
+border: 1px solid #dee2e6;
+border-radius: 6px;
+}
+
+.content {
+padding: 15px 23px 15px;
+overflow: hidden;
+position: relative;
+}
+
+@media (min-width: 1200px) {
+.bg-white.self-service-container {
+    margin-right: 10%;
+    margin-left: 10%;
+}
+}
+
+.questions {
+transition: height .5s ease;
+min-height: 250px;
+width: 100%;
+position: relative;
+overflow: hidden;
+}
+
+.question {
+position: absolute;
+left: 120%;
+width: 100%;
+top: 0;
+opacity: 0;
+min-height: 250px;
+}
+
+.question.animating {
+transition: left .5s ease, opacity .25s ease;
+}
+
+.question.previous {
+left: -120%;
+}
+
+.question.active {
+left: 0;
+opacity: 1;
+}
+
+.submit {
+display: none;
+}
+
+.back-next-controls {
+display: block;
+margin-top: 20px;
+}
+
+.breadcrumb {
+background: #fff;
+margin: 0;
+}
+
+.breadcrumb-item.active {
+color: #222;
+}
+
+.hidden {
+display: none !important;
+}
+
+.btn-highlight,
+.btn-highlight:active,
+.btn-highlight:focus {
+border: 2px solid #69b5f7;
+}
+
+@media (min-width: 500px) {
+.back-next-controls {
+    display: inline-block;
+    margin-top: 0;
+}
+}
+</style>
+<div class="bg-white bg-tab-content mt-4">
+<div class="content">
+     <nav aria-label="breadcrumb">
+        <ol class="breadcrumb pl-0 pl-md-5">
+            
+            <li class="breadcrumb-item active" aria-current="page">
+                Patient: <strong>DAD</strong> &nbsp; Age: <strong>65</strong> 
+            </li>
+        </ol>
+    </nav>
+    <div class="progress ml-0 ml-md-5 mr-0 mr-md-5">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="questions">
+        
+            <div id="CFRA1" class="question mb-4 pt-4 pt-4 pb-4 p-md-5 active" data-question-type="single"  data-related-question="CFRA2" data-skip-on-positive="true">
+                <h3 class="mb-4">Has the person been told they have heart disease, hypertension, diabetes, immunodeficiency, a chronic respiratory condition, or morbid obesity?</h3>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA1_1" data-negative="true" value="Yes" type="radio" name="CFRA1">&nbsp; <span style="display: inline-block; vertical-align: middle;">Yes</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA1_2" value="No" type="radio" name="CFRA1">&nbsp; <span style="display: inline-block; vertical-align: middle;">No</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA1_3" value="Unknown" type="radio" name="CFRA1">&nbsp; <span style="display: inline-block; vertical-align: middle;">Unknown</span>
+                    </label>
+                
+            </div>
+        
+            <div id="CFRA2" class="question mb-4 pt-4 pt-4 pb-4 p-md-5" data-question-type="multiple" >
+                <h3 class="mb-4">Which of the following conditions has the person been told they have?</h3>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_1" value="Heart Disease" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Heart Disease</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_2" value="Hypertension" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Hypertension</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_3" value="Diabetes" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Diabetes</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_4" value="Immunodeficiency" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Immunodeficiency</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_5" value="Respiratory condition" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Respiratory condition</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_6" value="Morbid Obesity" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Morbid Obesity</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_7" value="None of these" data-none="true" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">None of these</span>
+                    </label>
+                
+            </div>
+        
+        
+            <div id="CFRA41" class="question mb-4 pt-4 pt-4 pb-4 p-md-5" data-question-type="single" >
+                <h3 class="mb-4">What is the person&#39;s sex?</h3>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA41_1" value="Female" type="radio" name="CFRA41">&nbsp; <span style="display: inline-block; vertical-align: middle;">Female</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA41_2" value="Male" type="radio" name="CFRA41">&nbsp; <span style="display: inline-block; vertical-align: middle;">Male</span>
+                    </label>
+                
+                    <label class="answer btn btn-lg btn-light text-primary mr-2">
+                        <input style="display: inline-block; vertical-align: baseline;" id="CFRA41_3" value="Skip" type="radio" name="CFRA41">&nbsp; <span style="display: inline-block; vertical-align: middle;">Skip</span>
+                    </label>
+                
+            </div>
+        
+    </div>
+
+    <p class="mt-4 pl-md-5 pr-4 pr-md-5">
+        <a href="/app/result/12479/" class="submit btn btn-lg btn-primary disabled mr-2">Submit Responses</a>
+        <span class="back-next-controls">
+            <a href="#" class="backBtn btn btn-light disabled mr-2"><i class="fal fa-arrow-left"></i>&nbsp; Back</a>
+            <a href="#" class="nextBtn btn btn-light disabled">Next &nbsp;<i class="fal fa-arrow-right"></i></a>
+        </span>
+    </p>
+</div>
+</div>
+<p class="text-center mt-5 footer-logo">
+<a href="/"><img height="80" src="https://patientpattern-static.s3.amazonaws.com/static/2016/img/pp-logo.png"></a>
+</p>
+<div id="loader" class="loader">
+<img class="spin" src="https://patientpattern-static.s3.amazonaws.com/static/2016/img/pp-logo-badge.png" height="83" width="75" />
+</div>
+
+</div>

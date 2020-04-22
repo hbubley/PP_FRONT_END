@@ -1,0 +1,999 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="PatientPattern.com" />
+    <title>Patient Pattern</title>
+    <link rel="icon" href="https://patientpattern-static.s3.amazonaws.com/static/favicon.ico" type="image/x-icon" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    
+    
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/patientpattern.fontawesome/v5.8.2/css/all.min.css">
+    <style>
+    body {
+        background: rgb(246, 246, 246);
+        touch-action: manipulation;
+    }
+
+    .bg-white {
+        background: #fff;
+    }
+
+    .badge-info {
+        background-color: #9F86FF;
+    }
+    .badge-info[href]:hover,
+    .badge-info[href]:focus {
+        background-color: #7753ff;
+    }
+
+    .bg-tab-content {
+        border: 1px solid #dee2e6;
+        border-top: none;
+        box-shadow: 0 2px 9px 0 rgba(0,0,0,0.02);
+        border-radius: 0 0 6px 6px;
+    }
+
+    .loader {
+      position: fixed;
+      z-index: 9999999999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    .loader img {
+      position: absolute;
+      margin: auto;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .loader img.spin {
+      -webkit-animation:spin 4s linear infinite;
+      -moz-animation:spin 4s linear infinite;
+      animation:spin 4s linear infinite;
+    }
+
+    #drift-widget-container {
+        z-index: 1039 !important;
+    }
+
+    .staging-banner {
+        background-size: auto auto;
+        background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 238, 1, .5) 10px, rgba(255, 238, 1, .5) 20px );
+    }
+
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(1620deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(1620deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(1620deg); transform:rotate(1620deg); } }
+
+    .container > .tab-content {
+        padding: 15px 10px 20px !important;
+    }
+
+    .container {
+        max-width: 1300px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .secondary-nav .nav-link {
+        border-radius: 0;
+        border-bottom: 3px solid #fff;
+    }
+
+    .secondary-nav .nav-link:hover {
+        border-bottom: 3px solid #007bff2e;
+    }
+
+    .secondary-nav .nav-link.active {
+        background: #fff;
+        color: #444;
+        border-bottom: 3px solid #007bff;
+    }
+
+    .print-only {
+        display: none !important;
+    }
+
+    .footer-logo {
+        filter: grayscale(1); 
+        opacity: .6;
+        transition: opacity .5s ease, filter .5s ease;
+    }
+
+    .footer-logo:hover {
+        filter: none; 
+        opacity: 1;
+    }
+
+    @media (min-width: 768px) {
+        body > .container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .container > .tab-content {
+            padding: 12px 20px 20px !important;
+        }
+    }
+
+    @media (min-width: 1330px) {
+        body > .container {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    @media print {
+        .print-only {
+            display: block !important;
+        }
+
+        .hide-for-print {
+            display: none;
+        }
+    }
+
+    
+    .nav-tabs {
+        border-bottom: none;
+    }
+    
+
+    
+
+    </style>
+
+    
+</head>
+<body class="" id="" >
+    
+
+    
+    
+<style>
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+.dropdown-user .nav-link {
+    color: #444 !important;
+}
+.dropdown-user .nav-link:hover {
+    color: #222 !important;
+    background: #f2f2f2;
+}
+</style>
+<div id="pp-navbar" class="navbar-container container" style="background: #007bff;">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a class="navbar-brand" href="/livepac/"><img height="26" src="https://patientpattern-static.s3.amazonaws.com/static/2016/img/pp-logo-badge-white.png" style="display: inline;"></a>
+      
+      
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-light" id="navbar-collapse">
+        
+        <ul class="navbar-nav ml-auto">
+          
+          
+          
+          <li class="nav-item"><a class="nav-link" href="/accounts/logout/?next=/app/begin"><i class="fal fa-sign-out fa-fw"></i> Exit</a>
+          
+          
+        </ul>
+      </div>
+  </nav>
+</div>
+
+
+
+<div class="container">
+        
+
+        
+        <div class="self-service-container">
+        
+        
+
+        
+        </div>
+        
+        
+<style>
+body {
+    padding-bottom: 60px;
+}
+
+.bg-tab-content {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+}
+
+.content {
+    padding: 15px 23px 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+@media (min-width: 1200px) {
+    .bg-white.self-service-container {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+}
+
+.questions {
+    transition: height .5s ease;
+    min-height: 250px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.question {
+    position: absolute;
+    left: 120%;
+    width: 100%;
+    top: 0;
+    opacity: 0;
+    min-height: 250px;
+}
+
+.question.animating {
+    transition: left .5s ease, opacity .25s ease;
+}
+
+.question.previous {
+    left: -120%;
+}
+
+.question.active {
+    left: 0;
+    opacity: 1;
+}
+
+.submit {
+    display: none;
+}
+
+.back-next-controls {
+    display: block;
+    margin-top: 20px;
+}
+
+.breadcrumb {
+    background: #fff;
+    margin: 0;
+}
+
+.breadcrumb-item.active {
+    color: #222;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.btn-highlight,
+.btn-highlight:active,
+.btn-highlight:focus {
+    border: 2px solid #69b5f7;
+}
+
+@media (min-width: 500px) {
+    .back-next-controls {
+        display: inline-block;
+        margin-top: 0;
+    }
+}
+</style>
+<div class="bg-white bg-tab-content mt-4">
+    <div class="content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb pl-0 pl-md-5">
+                
+                <li class="breadcrumb-item active" aria-current="page">
+                    Patient: <strong>DAD</strong> &nbsp; Age: <strong>65</strong> 
+                </li>
+            </ol>
+        </nav>
+        <div class="progress ml-0 ml-md-5 mr-0 mr-md-5">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="questions">
+            
+                <div id="CFRA1" class="question mb-4 pt-4 pt-4 pb-4 p-md-5 active" data-question-type="single"  data-related-question="CFRA2" data-skip-on-positive="true">
+                    <h3 class="mb-4">Has the person been told they have heart disease, hypertension, diabetes, immunodeficiency, a chronic respiratory condition, or morbid obesity?</h3>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA1_1" data-negative="true" value="Yes" type="radio" name="CFRA1">&nbsp; <span style="display: inline-block; vertical-align: middle;">Yes</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA1_2" value="No" type="radio" name="CFRA1">&nbsp; <span style="display: inline-block; vertical-align: middle;">No</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA1_3" value="Unknown" type="radio" name="CFRA1">&nbsp; <span style="display: inline-block; vertical-align: middle;">Unknown</span>
+                        </label>
+                    
+                </div>
+            
+                <div id="CFRA2" class="question mb-4 pt-4 pt-4 pb-4 p-md-5" data-question-type="multiple" >
+                    <h3 class="mb-4">Which of the following conditions has the person been told they have?</h3>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_1" value="Heart Disease" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Heart Disease</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_2" value="Hypertension" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Hypertension</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_3" value="Diabetes" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Diabetes</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_4" value="Immunodeficiency" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Immunodeficiency</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_5" value="Respiratory condition" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Respiratory condition</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_6" value="Morbid Obesity" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">Morbid Obesity</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA2_7" value="None of these" data-none="true" type="checkbox" name="CFRA2">&nbsp; <span style="display: inline-block; vertical-align: middle;">None of these</span>
+                        </label>
+                    
+                </div>
+            
+            
+                <div id="CFRA41" class="question mb-4 pt-4 pt-4 pb-4 p-md-5" data-question-type="single" >
+                    <h3 class="mb-4">What is the person&#39;s sex?</h3>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA41_1" value="Female" type="radio" name="CFRA41">&nbsp; <span style="display: inline-block; vertical-align: middle;">Female</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA41_2" value="Male" type="radio" name="CFRA41">&nbsp; <span style="display: inline-block; vertical-align: middle;">Male</span>
+                        </label>
+                    
+                        <label class="answer btn btn-lg btn-light text-primary mr-2">
+                            <input style="display: inline-block; vertical-align: baseline;" id="CFRA41_3" value="Skip" type="radio" name="CFRA41">&nbsp; <span style="display: inline-block; vertical-align: middle;">Skip</span>
+                        </label>
+                    
+                </div>
+            
+        </div>
+
+        <p class="mt-4 pl-md-5 pr-4 pr-md-5">
+            <a href="/app/result/12479/" class="submit btn btn-lg btn-primary disabled mr-2">Submit Responses</a>
+            <span class="back-next-controls">
+                <a href="#" class="backBtn btn btn-light disabled mr-2"><i class="fal fa-arrow-left"></i>&nbsp; Back</a>
+                <a href="#" class="nextBtn btn btn-light disabled">Next &nbsp;<i class="fal fa-arrow-right"></i></a>
+            </span>
+        </p>
+    </div>
+</div>
+<p class="text-center mt-5 footer-logo">
+    <a href="/"><img height="80" src="https://patientpattern-static.s3.amazonaws.com/static/2016/img/pp-logo.png"></a>
+</p>
+<div id="loader" class="loader">
+    <img class="spin" src="https://patientpattern-static.s3.amazonaws.com/static/2016/img/pp-logo-badge.png" height="83" width="75" />
+</div>
+
+</div>
+    
+    <script
+  src="https://browser.sentry-cdn.com/5.7.0/bundle.min.js"
+  integrity="sha384-pHnCJ3bbzJ+LzI19wAdyBvGAjJ5vNAC59uxeRpw5WpgkSlZUQstEADxkSbBnI95q"
+  crossorigin="anonymous"></script>
+    <script>
+    Sentry.init({
+        dsn: 'https://fd106054580e48f9aa047996d5d9ff98@sentry.io/1774741',
+        environment: 'production',
+        debug: false
+    });
+    
+        Sentry.configureScope(function(scope) {
+            scope.setUser({
+                email: '',
+                id: '38991'
+            });
+        });
+    
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://patientpattern-static.s3.amazonaws.com/static/js/vendor/jquery.cookie.js"></script>
+    <script src="https://patientpattern-static.s3.amazonaws.com/static/js/patientpattern.js"></script>
+    <script src="https://patientpattern-static.s3.amazonaws.com/static/js/vendor/stickybits.min.js"></script>
+
+    
+    
+
+    <div id="frailtyModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Frailty Risk</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    
+                        <h4 class="text-success"><strong>Low - Pre-Frail (under 25%)</strong></h4>
+                        <p>A Frailty Risk Score <strong>under 25%</strong> indicates someone who is <strong>very fit</strong>, robust and motivated.  The person <strong>will likely do well in rehab and return to baseline health and function</strong>. Our clinical care is  designed to support a speedy recovery while avoiding any new health problems.</p>
+                    
+                        <h4 class="text-success"><strong>Mildly Frail (between 25% and 29%)</strong></h4>
+                        <p>A Frailty Risk Score <strong>between 25% and 29%</strong> indicates someone who is managing well but is less fit now and likely not as physically active. Even so, the person <strong>will likely do well in rehab and return to baseline health and function</strong>. Our clinical care is  designed to support a full recovery while avoiding any new health problems.</p>
+                    
+                        <h4 class="text-warning"><strong>Moderately Frail (between 30% and 39%)</strong></h4>
+                        <p>A Frailty Risk Score <strong>between 30% and 39%</strong> indicates someone who is moderately frail. Fatigue and other symptoms may have limited activities and now they are <strong>less likely to return to baseline health and function</strong>. Completing rehab may be difficult.  Optimized clinical approach should be personalized, and every effort will be made to support recovery and prevent bad outcomes from occurring. <strong>Understanding care priorities and preference are very important and documenting advance directives will help honor their wishes.</strong></p>
+                    
+                        <h4 class="text-danger"><strong>Severely Frail (over 40%)</strong></h4>
+                        <p>A Frailty Risk Score <strong>40% and greater</strong> indicates someone who is Severely Frail and as the score increases so does the risk for complications, in spite of excellent care.  They are <strong>likely to decline rapidly with the next illness or procedure</strong>. Honest communications, managing complications, and addressing new issues quickly are recommended. <strong>Completion of Advance Care Documents is critical.</strong></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="referModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fal fa-user-plus"></i> Refer and earn $100</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div data-grsf-block-form
+                        
+                            data-grsf-email=""
+                            data-grsf-first-name=""
+                            data-grsf-last-name=""
+                        
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js" integrity="sha256-7/yoZS3548fXSRXqc/xYzjsmuW3sFKzuvOCHd06Pmps=" crossorigin="anonymous"></script>
+<script>
+    window.storedFormValues = {};
+    window.$visibleQuestion = $('.question.active');
+    window.respondedQuestionCount = 0;
+    window.totalQuestionCount = 41;
+    var $loader = $('#loader');
+    var $submitBtn = $('.submit');
+    var $nextBtn = $('.nextBtn');
+    var $backBtn = $('.backBtn');
+    var $questions = $('.questions');
+    var $progressBar = $('.progress-bar');
+    
+    $(function(){
+        $(document)
+            .on('change', '.answer input', onAnswerChange)
+            .on('click', '.backBtn', onBackClick)
+            .on('click', '.nextBtn', onNextClick);
+
+        adjustQuestionsHeight($questions);
+
+        if (window.storedFormValues) {
+            loadStoredFormValues(true);
+        }
+
+        $questions.children().each(function() {
+            var $question = $(this);
+
+            if ($question.data('related-question')) {
+                var $relatedQuestion = $('#' + $question.data('related-question'));
+                var $selectedAnswer = $question.find('.answer input:checked');
+
+                if ($selectedAnswer.length) {
+                    if ($question.data('skip-on-positive') && !$selectedAnswer.data('negative')) {
+                        $relatedQuestion.addClass('hidden');
+                    } else if (!$question.data('skip-on-positive') && $selectedAnswer.data('negative')) {
+                        $relatedQuestion.addClass('hidden');
+                    }
+                }
+            }
+        });
+
+        var $visibleQuestions = $questions.children(':not(.hidden)');
+        
+        window.totalQuestionCount = $visibleQuestions.length;
+        window.respondedQuestionCount = $questions.children('.responded:not(.hidden)').length;
+
+        if (window.respondedQuestionCount && window.totalQuestionCount !== window.respondedQuestionCount) {
+            moveForward($visibleQuestions.filter(':not(.responded)').first());
+        }
+
+        if (window.$visibleQuestion.nextAll(':not(.hidden)').first().length && window.$visibleQuestion.hasClass('responded')) {
+            $nextBtn.removeClass('disabled');
+        } else {
+            $nextBtn.addClass('disabled');
+        }
+
+        $loader.hide();
+    });
+
+    function onAnswerChange(e) {   
+        e.preventDefault();
+    
+        var $answerInput = $(this);
+
+        $loader.show();
+
+        var $question = $answerInput.closest('.question');
+
+        if ($question.data('related-question')) {
+            var $relatedQuestion = $('#' + $question.data('related-question'));
+
+            if ($question.data('skip-on-positive') && !$answerInput.data('negative')) {
+                $relatedQuestion.addClass('hidden');
+            } else if (!$question.data('skip-on-positive') && $answerInput.data('negative')) {
+                $relatedQuestion.addClass('hidden');
+            } else {
+                $relatedQuestion.removeClass('hidden');
+            }
+        }
+
+        if ($answerInput.attr('type') === "checkbox") {
+            if (_.includes($answerInput.val(), 'None')) {
+                if ($answerInput.is(':checked')) {
+                    $question.find('input').prop('checked', false);
+                    $answerInput.prop('checked', true);
+                }
+            } else {
+                $question.find('[data-none]').prop('checked', false);
+            }
+
+            $nextBtn.addClass('btn-highlight');
+        }
+
+        onAnswerInputChange($answerInput);
+    }
+
+    function onAnswerInputChange($input) {
+        var $answer = $input;
+        
+        if ($answer.target) {
+            $answer = $(this);
+        }
+    
+        var $question = $answer.closest('.question');
+        var $nextQuestion = $question.nextAll(':not(.hidden)').first();
+
+        window.$visibleQuestion = $question;
+
+        submitResponse(
+            $question,
+            $answer,
+            function(response) {
+                if ($nextQuestion.length) {
+                    if ($answer.attr('type') === "radio") {
+                        moveForward();
+
+                        if ($nextQuestion.nextAll(':not(.hidden)').first().length && $nextQuestion.hasClass('responded')) {
+                            $nextBtn.removeClass('disabled');
+                        } else {
+                            $nextBtn.addClass('disabled');
+                        }
+                    }
+
+                    if ($answer.attr('type') == "checkbox") {
+                        if ($nextQuestion.nextAll(':not(.hidden)').first().length) {
+                            $nextBtn.removeClass('disabled');
+                        }
+                    }
+                }
+                $loader.hide();
+            }
+        );
+    }
+
+    function updateProgressBar() {
+        $progressBar.css('width', (window.respondedQuestionCount / window.totalQuestionCount) * 100 + '%');
+    }
+
+    function updateSubmitButton() {
+        if (window.totalQuestionCount === window.respondedQuestionCount) {
+            $submitBtn
+                .removeClass('disabled')
+                .fadeIn();
+        }
+    }
+
+    function onBackClick(e) {
+        e.preventDefault();
+
+        var $previousQuestion = window.$visibleQuestion.prevAll(':not(.hidden)').first();
+
+        if ($previousQuestion.length) {
+            moveBack()
+        }
+    }
+
+    function onNextClick(e) {
+        e.preventDefault();
+
+        var $nextQuestion = window.$visibleQuestion.nextAll(':not(.hidden)').first();
+
+        if ($nextQuestion.length) {
+            moveForward();
+
+            if (!window.$visibleQuestion.nextAll(':not(.hidden)').first().length) {
+                $submitBtn.fadeIn();
+            }
+        }
+    }
+
+    function submitResponse($question, $answer, callback) {
+        var key = $answer.attr('name');
+        var value = $answer.val();
+
+        if ($answer.attr('type') === 'checkbox') {
+            value = '';
+            var noneCheckedValue = null;
+            
+            $question.find('.answer').each(function() {
+                var $checkboxAnswerInput = $(this).find('input');
+
+                if ($checkboxAnswerInput.is(':checked')) {
+                    if (_.includes($checkboxAnswerInput.val(), 'None')) {
+                        noneCheckedValue = $checkboxAnswerInput.val();
+                    } else {
+                        value += $checkboxAnswerInput.val() + '|';
+                    }
+                }
+            });
+
+            value = value.replace(/\|$/, '');
+
+            if (noneCheckedValue) {
+                value = noneCheckedValue;
+            }
+        }
+
+        $.ajax({
+            type: "PATCH",
+            url: "/api/patientvisit/12479/",
+            data: JSON.stringify({
+                mds_data: window.storedFormValues,
+                changes: [{
+                    type: "ASSESSMENT",
+                    key: key,
+                    value: value
+                }]
+            }),
+            success: function(response) {
+                if (
+                    response &&
+                    !_.isUndefined(response["mds_data"])
+                ) {
+                    window.storedFormValues = response["mds_data"];
+
+                    loadStoredFormValues(false, response["new_changes"]);
+
+                    if (callback) {
+                        callback(response);
+                    }
+                }
+            },
+            contentType: "application/json"
+        });
+    }
+
+    function loadStoredFormValues(isInitialLoad, newChanges) {
+        if (newChanges) {
+            _.forEach(newChanges, function(change) {
+                updateFormValues(
+                    change.field,
+                    change.value
+                );
+            });
+        } else {
+            for (field in window.storedFormValues) {
+                updateFormValues(field, window.storedFormValues[field]);
+            }
+        }
+        window.totalQuestionCount = $questions.children(':not(.hidden)').length;
+        window.respondedQuestionCount = $questions.children('.responded:not(.hidden)').length;
+
+        updateProgressBar();
+        updateSubmitButton();
+    }
+
+    function updateFormValues(field, value) {
+        var $inputs = $('[name="' + field + '"]');
+
+        if ($inputs.length) {
+            if ($inputs.first()[0].type == "checkbox") {
+                $inputs.each(function() {
+                    var $input = $(this);
+
+                    if (_.includes(value, $input.val())) {
+                        $input.prop("checked", true);
+                    } else {
+                        $input.prop("checked", false);
+                    }
+                });
+            } else {
+                $inputs.prop('checked', false);
+                $inputs.filter('[value=' + value + ']').prop('checked', true);
+            }
+
+            $inputs.first().closest('.question').addClass('responded');
+        }
+    }
+
+    function moveBack() {
+        var $previousQuestion = window.$visibleQuestion.prevAll(':not(.hidden)').first();
+
+        window.$visibleQuestion
+            .removeClass('animating')
+            .removeClass('previous')
+            .addClass('next')
+            .addClass('animating')
+            .removeClass('active');
+        $previousQuestion
+            .removeClass('animating')
+            .addClass('previous')
+            .removeClass('next')
+            .addClass('animating')
+            .addClass('active');
+
+        if ($previousQuestion.prevAll(':not(.hidden)').first().length) {
+            $backBtn.removeClass('disabled');
+        } else {
+            $backBtn.addClass('disabled');
+        }
+
+        if ($previousQuestion.nextAll(':not(.hidden)').first().length && $previousQuestion.hasClass('responded')) {
+            $nextBtn.removeClass('disabled');
+
+            if ($previousQuestion.data('question-type') === 'multiple') {
+                $nextBtn.addClass('btn-highlight');
+            } else {
+                $nextBtn.removeClass('btn-highlight');
+            }
+        } else {
+            $nextBtn.addClass('disabled');
+            $nextBtn.removeClass('btn-highlight');
+        }
+
+        window.$visibleQuestion = $previousQuestion;
+        
+        adjustQuestionsHeight($questions);
+    }
+
+    function moveForward($nextQuestion) {
+        if (!$nextQuestion) {
+            $nextQuestion = window.$visibleQuestion.nextAll(':not(.hidden)').first();
+        }
+
+        window.$visibleQuestion
+            .removeClass('animating')
+            .removeClass('next')
+            .addClass('previous')
+            .addClass('animating')
+            .removeClass('active')
+            .addClass('responded');
+        $nextQuestion
+            .removeClass('animating')
+            .addClass('next')
+            .removeClass('previous')
+            .addClass('animating')
+            .addClass('active');
+
+        if ($nextQuestion.prevAll(':not(.hidden)').first().length) {
+            $backBtn.removeClass('disabled');
+        } else {
+            $backBtn.addClass('disabled');
+        }
+
+        if ($nextQuestion.nextAll(':not(.hidden)').first().length && $nextQuestion.hasClass('responded')) {
+            $nextBtn.removeClass('disabled');
+
+            if ($nextQuestion.data('question-type') === 'multiple') {
+                $nextBtn.addClass('btn-highlight');
+            } else {
+                $nextBtn.removeClass('btn-highlight');
+            }
+        } else {
+            $nextBtn.addClass('disabled');
+            $nextBtn.removeClass('btn-highlight');
+        }
+
+        window.$visibleQuestion = $nextQuestion;
+
+        adjustQuestionsHeight($questions);
+    }
+
+    function adjustQuestionsHeight($questions) {
+        $questions.css('height', window.$visibleQuestion.height() + parseInt(window.$visibleQuestion.css('padding'), 10) * 2);
+    }
+</script>
+
+
+    
+
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" type="text/css" href="https://patientpattern-static.s3.amazonaws.com/static/session_security/style.css">
+
+    
+    
+
+<div id="session_security_warning" class="session_security" style="display:none" aria-hidden="true" role="dialog">
+    <div class="session_security_overlay"></div>
+    <div class="session_security_modal" role="document" tabindex="-1">
+        <h3>Your session is about to expire</h3>
+        <p>Click or type to extend your session.</p>
+    </div>
+</div>
+
+
+
+    
+    <script type="text/javascript" src="https://patientpattern-static.s3.amazonaws.com/static/session_security/script.js"></script>
+
+    
+    
+        <script type="text/javascript">
+            var sessionSecurity = new yourlabs.SessionSecurity({
+                pingUrl: '/session_security/ping/',
+                warnAfter: 2640,
+                expireAfter: 2700,
+                confirmFormDiscard: false
+            });
+        </script>
+        
+
+
+
+    
+
+    <script>
+        $(function() {
+            $('#org-swap').change(function() {
+                $(this).parent().submit();
+            });
+            $('#referModal').on('shown.bs.modal', function (e) {
+                growsurf.initElements();
+                // Clean up after stupid growsurf
+                $('.grsf-share-url').attr('data-ignore-value-update', 'true');
+            });
+            // Clean up after stupid growsurf
+            $('.patient-filter').val("");
+        });
+    </script>
+
+    
+   <!-- Start of Async Drift Code -->
+<script>
+"use strict";
+
+!function() {
+  var t = window.driftt = window.drift = window.driftt || [];
+  if (!t.init) {
+    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+    t.factory = function(e) {
+      return function() {
+        var n = Array.prototype.slice.call(arguments);
+        return n.unshift(e), t.push(n), t;
+      };
+    }, t.methods.forEach(function(e) {
+      t[e] = t.factory(e);
+    }), t.load = function(t) {
+      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+      var i = document.getElementsByTagName("script")[0];
+      i.parentNode.insertBefore(o, i);
+    };
+  }
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('ryr4e9asd3in');
+</script>
+<!-- End of Async Drift Code -->
+<script>
+drift.on('ready',function(api, payload) {
+    $(document).on('click', '.toggle-support', function(e) {
+        e.preventDefault();
+        api.showWelcomeOrAwayMessage();
+    });
+});
+
+
+    drift.identify('user_78894538991', {
+        email: ''
+    });
+
+
+
+    
+
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+    heap.load("29577204");
+
+    
+        heap.identify('38991');
+
+        heap.addUserProperties({
+            id: 38991,
+            email: '',
+            role: 'care_manager',
+            facility: 'Self Service',
+            
+        });
+    
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-62555235-1', 'auto');
+    ga('send', 'pageview');
+
+
+if ('NodeList' in window && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
+        thisArg = thisArg || window;
+        for (var i = 0; i < this.length; i++) {
+        callback.call(thisArg, this[i], i, this);
+        }
+    };
+}
+</script>
+
+
+
+
+
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e81164cc213f90019450493&product=inline-share-buttons&cms=website' async='async'></script>
+
+
+
+
+</body>
+</html>
