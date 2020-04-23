@@ -43,18 +43,6 @@ const SurveyState = props => {
            payload: [res_data, keyArray]
         })
       };
-    //Get Keys
-      // const getKeys = async () => {
-      //   const res = await getAllQuestions();
-      //   const res_data = await res[0];
-      //   const keyArray = Object.keys(res_data).map((item) => item);
-      //   await keyArray.sort(sortFunction).splice(0,1);
-      //   await console.log(props.indexArray)
-      //   dispatch({
-      //       type: GET_KEYS,
-      //       payload: keyArray
-      //   })
-      // }
     //currentKey
     //Increment
     //Decrement

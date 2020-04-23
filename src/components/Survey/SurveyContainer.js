@@ -14,7 +14,7 @@ const SurveyContainer = () => {
         console.log("render")
   }, []);
 
-  
+  if(surveyContext.loading===false){
  console.log("dataKeys, dataArray - SurveyContainer", surveyContext.dataKeys, surveyContext.dataArray)
   return (
     <div className="bg-white bg-tab-content mt-4">
@@ -27,5 +27,8 @@ const SurveyContainer = () => {
       </div>
     </div>
   );
+  }else{
+    console.log("LOAD") 
+  return <>loading</>}
 };
 export default SurveyContainer;

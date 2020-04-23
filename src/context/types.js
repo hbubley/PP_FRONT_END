@@ -1,5 +1,4 @@
 export const GET_DATA = "GET_DATA"
-export const GET_KEYS = "GET_KEYS"
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const SET_CURRENT_QUESTION = "SET_CURRENT_QUESTION";
