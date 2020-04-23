@@ -1,6 +1,7 @@
 import {
   GET_DATA,
   GET_KEYS,
+  CURRENT_KEY,
   INCREMENT,
   DECREMENT,
   SET_CURRENT_QUESTION,
@@ -15,7 +16,8 @@ export default (state, action) => {
     case GET_DATA:
       return {
         ...state,
-        dataArray: action.payload,
+        dataArray: action.payload[0],
+        dataKeys: action.payload[1],
         loading: false
       }
     case SET_LOADING:

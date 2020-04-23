@@ -3,9 +3,11 @@ import axios from "axios";
 import {getAllQuestions} from "../utility/api-helper"
 import SurveyContext from "./surveyContext";
 import SurveyReducer from "./surveyReducer"
+import {sortFunction} from "../utility/sortFunction"
 import {
     GET_DATA,
-    GET_KEYS
+    GET_KEYS,
+    CURRENT_KEY,
     INCREMENT,
     DECREMENT,
     SET_CURRENT_QUESTION,
@@ -31,20 +33,35 @@ const SurveyState = props => {
     const [state, dispatch] = useReducer(SurveyReducer, initialState)
     //Get Data
       const getData = async () => {
+        setLoading()
         const res = await getAllQuestions();
-        const res_data = await res[0];
+        const res_data = await res[0]
+        const keyArray = Object.keys(res_data).map((item) => item);
+        await keyArray.sort(sortFunction).splice(0,1);
         dispatch({
            type: GET_DATA,
-           payload: res_data
+           payload: [res_data, keyArray]
         })
       };
     //Get Keys
-      const getKeys = async () => {
-          
-      }
+      // const getKeys = async () => {
+      //   const res = await getAllQuestions();
+      //   const res_data = await res[0];
+      //   const keyArray = Object.keys(res_data).map((item) => item);
+      //   await keyArray.sort(sortFunction).splice(0,1);
+      //   await console.log(props.indexArray)
+      //   dispatch({
+      //       type: GET_KEYS,
+      //       payload: keyArray
+      //   })
+      // }
+    //currentKey
     //Increment
     //Decrement
     //Set Current Question
+    const currentQuestion = async (index) => {
+        
+    }
     //Set Current Answer Options
     //Add User Input
     //Calculate Percent
@@ -54,6 +71,7 @@ const SurveyState = props => {
     return <SurveyContext.Provider
         value={{
         dataArray: state.dataArray,
+        dataKeys: state.dataKeys,
         questionIndex: state.questionIndex,
         currentQuestion: state.currentQuestion,
         currentAnswerOptions: state.currentAnswerOptions,
@@ -62,6 +80,8 @@ const SurveyState = props => {
         percent: state.percent,
         loading: state.loading,
         getData
+        // getKeys
+      
         }}
     >
         {props.children}

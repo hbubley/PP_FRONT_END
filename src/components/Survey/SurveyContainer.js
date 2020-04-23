@@ -11,8 +11,11 @@ const SurveyContainer = () => {
 
  useEffect(() => {
       surveyContext.getData();
+        console.log("render")
   }, []);
- 
+
+  
+ console.log("dataKeys, dataArray - SurveyContainer", surveyContext.dataKeys, surveyContext.dataArray)
   return (
     <div className="bg-white bg-tab-content mt-4">
       <div className="content">
