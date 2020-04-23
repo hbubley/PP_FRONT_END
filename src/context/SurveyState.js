@@ -6,12 +6,8 @@ import SurveyReducer from "./surveyReducer"
 import {sortFunction} from "../utility/sortFunction"
 import {
     GET_DATA,
-    GET_KEYS,
-    CURRENT_KEY,
     INCREMENT,
     DECREMENT,
-    SET_CURRENT_QUESTION,
-    SET_CURRENT_ANSWER_OPTIONS,
     ADD_USER_INPUT,
     CALCULATE_PERCENT,
     SET_LOADING
@@ -22,7 +18,7 @@ const SurveyState = props => {
         dataArray: '',
         dataKeys: [],
         questionIndex: 0,
-        currentQuestion: {},
+        currentData: {},
         currentAnswerOptions: [],
         userInput: {},
         keyName: '',
@@ -44,7 +40,20 @@ const SurveyState = props => {
         })
       };
     //currentKey
+    // const currentKeyAndData = async () => {
+    //   setLoading()
+      
+    //   dispatch({
+    //     type: GET_DATA,
+    //     payload: {res_cur_question, res_cur_key}
+    //  })
+    // }
     //Increment
+    // const increment = async () => {
+    //   dispatch({
+    //     type: INCREMENT
+    //  })
+    // }
     //Decrement
     //Set Current Question
     const currentQuestion = async (index) => {
@@ -61,13 +70,10 @@ const SurveyState = props => {
         dataArray: state.dataArray,
         dataKeys: state.dataKeys,
         questionIndex: state.questionIndex,
-        currentQuestion: state.currentQuestion,
-        currentAnswerOptions: state.currentAnswerOptions,
         userInput: state.userInput,
-        keyName: state.keyName,
         percent: state.percent,
         loading: state.loading,
-        getData
+        getData,
         // getKeys
       
         }}

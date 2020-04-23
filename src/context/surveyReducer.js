@@ -1,11 +1,7 @@
 import {
   GET_DATA,
-  GET_KEYS,
-  CURRENT_KEY,
   INCREMENT,
   DECREMENT,
-  SET_CURRENT_QUESTION,
-  SET_CURRENT_ANSWER_OPTIONS,
   ADD_USER_INPUT,
   CALCULATE_PERCENT,
   SET_LOADING
@@ -20,6 +16,11 @@ export default (state, action) => {
         dataKeys: action.payload[1],
         loading: false
       }
+    // case INCREMENT:
+    //   return{
+    //     ...state,
+    //     questionIndex: questionIndex + 1
+    //   }
     case SET_LOADING:
       return {
         ...state,
