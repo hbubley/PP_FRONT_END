@@ -78,9 +78,9 @@ body {
   color: #222;
   }
   
-  /* .hidden {
+  .hidden {
   display: none !important;
-  } */
+  }
   
   .btn-highlight,
   .btn-highlight:active,

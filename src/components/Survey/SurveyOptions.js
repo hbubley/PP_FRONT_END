@@ -2,12 +2,11 @@ import React, {useContext} from 'react'
 import SurveyContext from '../../context/surveyContext'
 
 export default function SurveyOptions() {
-    const surveyContext = useContext(SurveyContext);
-    if(surveyContext.dataArray){
-        let dataCurrent = surveyContext.dataArray[surveyContext.dataKeys[surveyContext.questionIndex]]
-        let idName = surveyContext.dataKeys[surveyContext.questionIndex]
-        let type = dataCurrent.question_type
-        let answerOptions = dataCurrent.answer_options.map((option, i) => {
+    const {dataArray, dataKeys, questionIndex} = useContext(SurveyContext);
+    if(dataArray){
+        let idName = dataKeys[questionIndex]
+        let answerOptions = dataArray[idName].answer_options.map((option, i) => {
+          console.log(option.question_type)
             return (
               <label
                 className="answer btn btn-lg btn-light text-primary mr-2"
@@ -17,7 +16,7 @@ export default function SurveyOptions() {
                   style={{"display": "inline-block", "verticalAlign": "baseline"}}
                   id={idName + "_" + i}
                   value={option}
-                  type={type === "single" ? "radio" : "checkbox"}
+                  type={dataArray[idName].question_type === "single" ? "radio" : "checkbox"}
                   name={idName}
                 />
                 &nbsp;

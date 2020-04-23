@@ -11,25 +11,38 @@ const SurveyContainer = () => {
 
   useEffect(() => {
     surveyContext.getData();
-      console.log("render")
+    console.log("render");
   }, []);
 
-
-if(surveyContext.loading===false){
- console.log("dataKeys, dataArray - SurveyContainer", surveyContext.dataKeys, surveyContext.dataArray)
-  return (
-    <div className="bg-white bg-tab-content mt-4">
-      <div className="content">
-        <PatientInfoBar />
-        <ProgressBar />
-        <SurveyQuestions />
-        <SurveyOptions />
-        <Buttons />
+  if (surveyContext.loading === false) {
+    console.log(
+      "dataKeys, dataArray - SurveyContainer",
+      surveyContext.dataKeys,
+      surveyContext.dataArray
+    );
+    return (
+      <div className="bg-white bg-tab-content mt-4">
+        <div className="content">
+          <PatientInfoBar />
+          <ProgressBar />
+          <SurveyQuestions />
+          <Buttons />
+        </div>
       </div>
-    </div>
-  );
-  }else{
-    console.log("LOAD") 
-  return <>loading</>}
+    );
+  } else {
+    console.log("LOAD");
+    return (
+      <div id="loader" class="loader">
+        <img
+          className="spin"
+          src="https://patientpattern-static.s3.amazonaws.com/static/2016/img/pp-logo-badge.png"
+          height="83"
+          width="75"
+          alt= ''
+        />
+      </div>
+    );
+  }
 };
 export default SurveyContainer;
