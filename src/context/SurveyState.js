@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import axios from "axios";
 import { getAllQuestions } from "../utility/api-helper";
 import SurveyContext from "./surveyContext";
@@ -18,8 +18,6 @@ const SurveyState = (props) => {
     dataArray: "",
     dataKeys: [],
     questionIndex: 0,
-    currentData: {},
-    currentAnswerOptions: [],
     userInput: {},
     keyName: "",
     percent: 0,
@@ -52,6 +50,13 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
+  const handleUserInput = async(id, input) => {
+      let userInput = {id, input}
+      dispatch ({
+        type: ADD_USER_INPUT,
+        payload: userInput
+      });
+    }
   //Calculate Percent
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
@@ -68,6 +73,7 @@ const SurveyState = (props) => {
         getData,
         increment,
         decrement,
+        handleUserInput,
       }}
     >
       {props.children}

@@ -26,6 +26,11 @@ export default (state, action) => {
         ...state,
         questionIndex: state.questionIndex - 1,
       };
+    case ADD_USER_INPUT:
+      return {
+        ...state,
+        userInput: action.payload
+      }
     case SET_LOADING:
       return {
         ...state,

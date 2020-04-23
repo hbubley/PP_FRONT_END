@@ -6,8 +6,10 @@ import Refer from "./components/Refer/Refer";
 import Results from "./components/Results/Results";
 import Nav from "./components/Nav";
 import SurveyState from "./context/SurveyState";
+import LogRocket from 'logrocket';
 
 function App() {
+  LogRocket.init('shaqrs/fraility_score')
   return (
     <SurveyState>
       <Nav />

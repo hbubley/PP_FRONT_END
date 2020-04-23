@@ -8,18 +8,12 @@ import SurveyContext from "../../context/surveyContext";
 
 const SurveyContainer = () => {
   const surveyContext = useContext(SurveyContext);
-
   useEffect(() => {
     surveyContext.getData();
     console.log("render");
   }, []);
 
   if (surveyContext.loading === false) {
-    console.log(
-      "dataKeys, dataArray - SurveyContainer",
-      surveyContext.dataKeys,
-      surveyContext.dataArray
-    );
     return (
       <div className="bg-white bg-tab-content mt-4">
         <div className="content">
