@@ -27,9 +27,11 @@ export default (state, action) => {
         questionIndex: state.questionIndex - 1,
       };
     case ADD_USER_INPUT:
+      console.log("USER INPU REDUCER", state.userInput)
+      const newUserInput = [...state.userInput, action.payload]
       return {
         ...state,
-        userInput: action.payload
+        userInput: newUserInput
       }
     case SET_LOADING:
       return {

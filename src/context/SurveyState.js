@@ -18,7 +18,7 @@ const SurveyState = (props) => {
     dataArray: "",
     dataKeys: [],
     questionIndex: 0,
-    userInput: {},
+    userInput: [],
     keyName: "",
     percent: 0,
     loading: false,
@@ -51,10 +51,11 @@ const SurveyState = (props) => {
   };
   //Add User Input
   const handleUserInput = async(id, input) => {
-      let userInput = {id, input}
+      let userSelect = {id, input}
+    
       dispatch ({
         type: ADD_USER_INPUT,
-        payload: userInput
+        payload: userSelect
       });
     }
   //Calculate Percent
