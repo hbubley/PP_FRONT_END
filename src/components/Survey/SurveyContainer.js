@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import PatientInfoBar from "./PatientInfoBar";
 import ProgressBar from "./ProgressBar";
 import SurveyQuestions from "./SurveyQuestions";
@@ -15,7 +15,7 @@ const SurveyContainer = () => {
   }, []);
 
 
-  if(surveyContext.loading===false){
+if(surveyContext.loading===false){
  console.log("dataKeys, dataArray - SurveyContainer", surveyContext.dataKeys, surveyContext.dataArray)
   return (
     <div className="bg-white bg-tab-content mt-4">
