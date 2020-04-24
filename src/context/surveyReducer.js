@@ -3,8 +3,7 @@ import {
   INCREMENT,
   DECREMENT,
   ADD_USER_INPUT,
-  SET_LOADING,
-  SET_PERCENT
+  SET_LOADING
 } from "./types";
 
 export default (state, action) => {
@@ -31,12 +30,6 @@ export default (state, action) => {
       return {
         ...state,
         userInput: newUserInput
-      }
-    case SET_PERCENT:
-      let percent = ((state.questionIndex+1) / 41) * 100 + "%";
-      return {
-        ...state,
-        percent: percent
       }
     case SET_LOADING:
       return {
