@@ -9,7 +9,6 @@ const SurveyContainer = () => {
   const surveyContext = useContext(SurveyContext);
   useEffect(() => {
     surveyContext.getData();
-    console.log("render");
   }, []);
 
   if (surveyContext.loading === false) {
@@ -24,9 +23,8 @@ const SurveyContainer = () => {
       </div>
     );
   } else {
-    console.log("LOAD");
     return (
-      <div id="loader" class="loader">
+      <div id="loader" className="loader">
         <img
           className="spin"
           src="https://patientpattern-static.s3.amazonaws.com/static/2016/img/pp-logo-badge.png"

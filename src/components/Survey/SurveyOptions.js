@@ -5,6 +5,7 @@ export default function SurveyOptions() {
     const {dataArray, dataKeys, questionIndex, handleUserInput} = useContext(SurveyContext);
     if(dataArray){
         let idName = dataKeys[questionIndex]
+        let type = dataArray[idName].question_type
         let answerOptions = dataArray[idName].answer_options.map((option, i) => {
             return (
               <label
@@ -15,9 +16,9 @@ export default function SurveyOptions() {
                   style={{"display": "inline-block", "verticalAlign": "baseline"}}
                   id={idName + "_" + i}
                   value={option}
-                  type={dataArray[idName].question_type === "single" ? "radio" : "checkbox"}
+                  type={type === "single" ? "radio" : "checkbox"}
                   name={idName}
-                  onChange={e => handleUserInput(idName, e.target.value)}
+                  onChange={e => handleUserInput(idName, e.target.value, type)}
                 />
                 &nbsp;
                 <span style={{"display": "inline-block", "verticalAlign": "middle"}}>{option}</span>

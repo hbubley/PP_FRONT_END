@@ -17,8 +17,8 @@ function App() {
         <div className="container">
           <div className="self-service-container"></div>
           <Route exact path="/" component={SurveyContainer} />
-          <Route path="/refer" render={(props) => <Refer />} />
-          <Route path="/results" render={(props) => <Results />} />
+          <Route path="/refer" component = {Refer} />
+          <Route path="/results" component= {Results} />
           <p className="text-center mt-5 footer-logo">
             <a href="/">
               <img

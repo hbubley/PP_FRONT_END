@@ -17,6 +17,6 @@ export default function ProgressBar() {
       </div>
     );
   } else {
-    return <div id="loader" class="loader"></div>;
+    return <div id="loader" className="loader"></div>;
   }
 }

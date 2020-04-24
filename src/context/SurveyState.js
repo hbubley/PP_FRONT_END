@@ -47,9 +47,11 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
-  const handleUserInput = async(id, input) => {
+  const handleUserInput = async(id, input, type) => {
       let userSelect = {id, input}
-    
+      if(type === "single"){
+        increment()
+      }
       dispatch ({
         type: ADD_USER_INPUT,
         payload: userSelect
