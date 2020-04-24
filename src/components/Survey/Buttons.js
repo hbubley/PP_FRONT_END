@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import {Link} from "react-router-dom"
 import SurveyContext from '../../context/surveyContext'
 
 export default function Buttons() {
@@ -8,7 +9,8 @@ export default function Buttons() {
         <>
         <p className="mt-4 pl-md-5 pr-4 pr-md-5">
             {questionIndex>=(dataKeys.length-2) ? 
-            <button className="btn btn-lg btn-primary mr-2">Submit Responses</button> 
+            <Link to="/results">
+            <button className="btn btn-lg btn-primary mr-2">Submit Responses</button></Link>
             : null}
             <span className="back-next-controls">
                 <button className="backBtn btn btn-light mr-2" disabled = {questionIndex===0} onClick={decrement}><i className="fal fa-arrow-left"></i>&nbsp; Back</button>
