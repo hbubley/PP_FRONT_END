@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import PatientInfoBar from "./PatientInfoBar";
 import ProgressBar from "./ProgressBar";
 import SurveyQuestions from "./SurveyQuestions";
-import SurveyOptions from "./SurveyOptions";
 import Buttons from "./Buttons";
 import SurveyContext from "../../context/surveyContext";
 

@@ -9,7 +9,7 @@ import {
   INCREMENT,
   DECREMENT,
   ADD_USER_INPUT,
-  CALCULATE_PERCENT,
+  SET_PERCENT,
   SET_LOADING,
 } from "./types";
 
@@ -59,6 +59,11 @@ const SurveyState = (props) => {
       });
     }
   //Calculate Percent
+  const handleCalculatePercent = async(keysLength, inputLength) => {
+    dispatch({
+      type: SET_PERCENT
+    });
+  }
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
@@ -75,6 +80,7 @@ const SurveyState = (props) => {
         increment,
         decrement,
         handleUserInput,
+        handleCalculatePercent
       }}
     >
       {props.children}
