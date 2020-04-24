@@ -47,10 +47,16 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
-  const handleUserInput = async(id, input, type) => {
+  const handleUserInput = async(id, input, type, skip) => {
       let userSelect = {id, input}
-      if(type === "single"){
+      if(skip === "true" && userSelect.input==='No'){
         increment()
+        increment()
+        console.log("LAND THE PLANE")
+      }
+      else if(type === "single"){
+         increment()
+        console.log(skip, userSelect.input)
       }
       dispatch ({
         type: ADD_USER_INPUT,

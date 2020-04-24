@@ -6,6 +6,7 @@ export default function SurveyOptions() {
     if(dataArray){
         let idName = dataKeys[questionIndex]
         let type = dataArray[idName].question_type
+        let skip = dataArray[idName].skip_on_positive_response
         let answerOptions = dataArray[idName].answer_options.map((option, i) => {
             return (
               <label
@@ -18,7 +19,7 @@ export default function SurveyOptions() {
                   value={option}
                   type={type === "single" ? "radio" : "checkbox"}
                   name={idName}
-                  onChange={e => handleUserInput(idName, e.target.value, type)}
+                  onChange={e => handleUserInput(idName, e.target.value, type, skip)}
                 />
                 &nbsp;
                 <span style={{"display": "inline-block", "verticalAlign": "middle"}}>{option}</span>
