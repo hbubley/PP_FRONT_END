@@ -27,14 +27,13 @@ export default (state, action) => {
         questionIndex: state.questionIndex - 1,
       };
     case ADD_USER_INPUT:
-      console.log("USER INPU REDUCER", state.userInput)
       const newUserInput = [...state.userInput, action.payload]
       return {
         ...state,
         userInput: newUserInput
       }
     case SET_PERCENT:
-      let percent = ((state.questionIndex+1) / state.keysData.length) * 100 + "%";
+      let percent = ((state.questionIndex+1) / 41) * 100 + "%";
       return {
         ...state,
         percent: percent
