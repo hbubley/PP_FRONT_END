@@ -7,7 +7,9 @@ export default function Buttons() {
     return (
         <>
         <p className="mt-4 pl-md-5 pr-4 pr-md-5">
-            <a href="/app/result/12479/" className="submit btn btn-lg btn-primary mr-2 hidden">Submit Responses</a>
+            {questionIndex>=(dataKeys.length-2) ? 
+            <button className="btn btn-lg btn-primary mr-2">Submit Responses</button> 
+            : null}
             <span className="back-next-controls">
                 <button className="backBtn btn btn-light mr-2" disabled = {questionIndex===0} onClick={decrement}><i className="fal fa-arrow-left"></i>&nbsp; Back</button>
                 <button className="nextBtn btn btn-light" onClick={increment} disabled={userInput.length-1 < questionIndex || questionIndex===dataKeys.length-1}>Next &nbsp;<i className="fal fa-arrow-right"></i></button>

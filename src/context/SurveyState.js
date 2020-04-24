@@ -51,11 +51,9 @@ const SurveyState = (props) => {
       let userSelect = {id, input}
       if(skip === true && input==='No'){
         for(let i = 1; i<=2; i++){increment()}
-        console.log("LAND THE PLANE")
       }
-      else if(type === "single"){
+      else if(type === "single" && state.questionIndex<(state.dataKeys.length-2)){
          increment()
-        console.log(skip, userSelect.input)
       }
       dispatch ({
         type: ADD_USER_INPUT,
