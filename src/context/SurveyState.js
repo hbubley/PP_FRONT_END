@@ -49,9 +49,8 @@ const SurveyState = (props) => {
   //Add User Input
   const handleUserInput = async(id, input, type, skip) => {
       let userSelect = {id, input}
-      if(skip === "true" && userSelect.input==='No'){
-        increment()
-        increment()
+      if(skip === true && input==='No'){
+        for(let i = 1; i<=2; i++){increment()}
         console.log("LAND THE PLANE")
       }
       else if(type === "single"){
