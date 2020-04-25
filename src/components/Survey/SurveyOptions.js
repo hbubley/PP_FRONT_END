@@ -3,6 +3,7 @@ import SurveyContext from '../../context/surveyContext'
 
 export default function SurveyOptions() {
     const {dataArray, dataKeys, questionIndex, handleUserInput} = useContext(SurveyContext);
+
     if(dataArray){
         let idName = dataKeys[questionIndex]
         let type = dataArray[idName].question_type
@@ -19,7 +20,7 @@ export default function SurveyOptions() {
                   value={option}
                   type={type === "single" ? "radio" : "checkbox"}
                   name={idName}
-                  onChange={e => handleUserInput(idName, e.target.value, type, skip)}
+                  onChange={e => handleUserInput(e, idName, type, skip)}
                 />
                 &nbsp;
                 <span style={{"display": "inline-block", "verticalAlign": "middle"}}>{option}</span>

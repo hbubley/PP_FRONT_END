@@ -17,7 +17,7 @@ const SurveyState = (props) => {
     dataArray: "",
     dataKeys: [],
     questionIndex: 0,
-    userInput: [],
+    userInput: {},
     loading: false,
   };
 
@@ -47,26 +47,37 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
-  const handleUserInput = async(id, input, type, skip) => {
-      let userSelect = {id, input}
-      //WORKING ON TRANSFORMING FORMER LOGIC
-      // if (type === "single") {
-      //   return userSelect={id, input}
-      // } else {
-      //   let value = [input];
-      //   if (input.length) {
-      //     const answerArr = input.split(",");
-      //     if (input.checked) {
-      //       userSelect = ([idName, [...answerArr, value].join(",")]);
-      //     } else {
-      //       const answerIndex = answerArr.indexOf(value);
-      //       if (answerIndex > -1) {
-      //         let replaceArray = [...answerArr];
-      //         replaceArray.splice(answerIndex, 1);
-      //         setInput([idName, answerArr.join(",")]);
-      //       }
-      //     }
-      //   }
+  const handleUserInput = async(e, id, type, skip) => {
+      const input = e.target
+      const value = input.value     
+      let userSelect = {}
+      let updatedInput = (typeof state.userInput[id] !== "undefined") 
+        ? state.userInput[id] 
+        : ''
+      if (type === "single") {
+        updatedInput = value
+      } else {    
+        const answerArr = updatedInput.split(",");
+        console.log("handleUserInput -> answerArr", answerArr)
+
+          //not hitting this if statement!!
+          if (input.checked) {
+            console.log("Are we actually hitting this. plz werk bitch")
+            if(answerArr.length){
+              console.log("render")
+              updatedInput = [...answerArr, value].join(",");
+            }else{updatedInput = value}
+          } else {
+            const answerIndex = answerArr.indexOf(value);
+            if (answerIndex > -1) {
+              let replaceArray = [...answerArr];
+              replaceArray.splice(answerIndex, 1);
+              updatedInput = replaceArray.join(",")
+            }
+          }
+      }
+      userSelect[id] = updatedInput
+      
       if(skip === true && input==='No'){
         for(let i = 1; i<=2; i++){increment()}
       }
@@ -100,9 +111,4 @@ const SurveyState = (props) => {
   );
 };
 
-export default SurveyState;
-// const [currentQuestion, setCurrentQuestion] = useState ({})
-// const [currentAnswerOptions, setCurrentAnswerOptions] = useState ([])
-// const [questionIndex, setQuestionIndex] = useState(0)
-// const [userInput, setUserInput] = useState({})
-// const [keyName, setKeyName] = useState("")
+export default SurveyState
