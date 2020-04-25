@@ -49,6 +49,24 @@ const SurveyState = (props) => {
   //Add User Input
   const handleUserInput = async(id, input, type, skip) => {
       let userSelect = {id, input}
+      //WORKING ON TRANSFORMING FORMER LOGIC
+      // if (type === "single") {
+      //   return userSelect={id, input}
+      // } else {
+      //   let value = [input];
+      //   if (input.length) {
+      //     const answerArr = input.split(",");
+      //     if (input.checked) {
+      //       userSelect = ([idName, [...answerArr, value].join(",")]);
+      //     } else {
+      //       const answerIndex = answerArr.indexOf(value);
+      //       if (answerIndex > -1) {
+      //         let replaceArray = [...answerArr];
+      //         replaceArray.splice(answerIndex, 1);
+      //         setInput([idName, answerArr.join(",")]);
+      //       }
+      //     }
+      //   }
       if(skip === true && input==='No'){
         for(let i = 1; i<=2; i++){increment()}
       }
