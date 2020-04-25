@@ -56,11 +56,10 @@ const SurveyState = (props) => {
         : ''
       if (type === "single") {
         updatedInput = value
-      } else {    
+      } else {
+         
         const answerArr = updatedInput.split(",");
         console.log("handleUserInput -> answerArr", answerArr)
-
-          //not hitting this if statement!!
           if (input.checked) {
             console.log("Are we actually hitting this. plz werk bitch")
             if(answerArr.length){
