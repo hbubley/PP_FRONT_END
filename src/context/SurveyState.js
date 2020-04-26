@@ -16,6 +16,7 @@ const SurveyState = (props) => {
   const initialState = {
     dataArray: "",
     dataKeys: [],
+    userChecked: [],
     questionIndex: 0,
     userInput: {},
     loading: false,
@@ -51,11 +52,11 @@ const SurveyState = (props) => {
       const input = e.target
       const value = input.value     
       let userSelect = {}
+      let userChecked = []
       let updatedInput = (typeof state.userInput[id] !== "undefined") 
         ? state.userInput[id] 
         : ''
 
-        console.log("handleUserInput -> updatedInput", updatedInput)
         
       if (type === "single") {
         updatedInput = value
@@ -63,7 +64,6 @@ const SurveyState = (props) => {
         let answerArr = [];
         if(updatedInput.length){
           answerArr = updatedInput.split(",")
-          console.log("handleUserInput -> answerArr", answerArr)
         }
           if (input.checked) {
             if(answerArr.length){
@@ -79,6 +79,8 @@ const SurveyState = (props) => {
           }
       }
       userSelect[id] = updatedInput
+      userChecked[id] = updatedInput.split(',') 
+      console.log("handleUserInput -> userChecked[id]", userChecked[id])
       
       if(skip === true && input==='No'){
         for(let i = 1; i<=2; i++){increment()}
@@ -88,7 +90,7 @@ const SurveyState = (props) => {
       }
       dispatch ({
         type: ADD_USER_INPUT,
-        payload: userSelect
+        payload: [userSelect, userChecked]
       });
     }
   //Set Loading
@@ -99,6 +101,7 @@ const SurveyState = (props) => {
       value={{
         dataArray: state.dataArray,
         dataKeys: state.dataKeys,
+        userChecked: state.userChecked,
         questionIndex: state.questionIndex,
         userInput: state.userInput,
         loading: state.loading,
