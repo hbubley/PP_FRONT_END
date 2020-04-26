@@ -28,8 +28,8 @@ export default (state, action) => {
       };
     case ADD_USER_INPUT:  
       const newUserInput = {...state.userInput, ...action.payload[0]}
+      const newUserChecked = {...state.userChecked, ...action.payload[1]}
       // const newUserChecked = []
-      console.log("newUserInput ", newUserInput )
       
       // _.join(array, [separator=',']) for multi input
       // _.pullAt(array, [indexes]) 
@@ -38,7 +38,7 @@ export default (state, action) => {
       return {
         ...state,
         userInput: newUserInput,
-        userChecked: action.payload[1]
+        userChecked: newUserChecked
       }
     case SET_LOADING:
       return {
