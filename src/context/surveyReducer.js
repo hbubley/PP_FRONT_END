@@ -27,18 +27,14 @@ export default (state, action) => {
         questionIndex: state.questionIndex - 1,
       };
     case ADD_USER_INPUT:  
-      const newUserInput = {...state.userInput, ...action.payload[0]}
-      const newUserChecked = {...state.userChecked, ...action.payload[1]}
-      // const newUserChecked = []
-      
+      const newUserInput = {...state.userInput, ...action.payload}
       // _.join(array, [separator=',']) for multi input
       // _.pullAt(array, [indexes]) 
       // _.pullAllBy(array, values, [iteratee=_.identity])
       // _.pullAllWith(array, values, [comparator])
       return {
         ...state,
-        userInput: newUserInput,
-        userChecked: newUserChecked
+        userInput: newUserInput
       }
     case SET_LOADING:
       return {
