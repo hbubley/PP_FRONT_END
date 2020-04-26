@@ -49,51 +49,54 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
-  const handleUserInput = async(e, id, nextId, type, skip) => {
-      const input = e.target
-      const value = input.value     
-      let userSelect = {}
-      let updatedInput = (typeof state.userInput[id] !== "undefined") 
-        ? state.userInput[id] 
-        : ''
+  const handleUserInput = async (e, id, nextId, type, skip, defaultAnswer) => {
+    const input = e.target;
+    const value = input.value;
+    let userSelect = {};
+    let updatedInput =
+      typeof state.userInput[id] !== "undefined" ? state.userInput[id] : "";
 
-        
-      if (type === "single") {
-        updatedInput = value
-
-      } else {    
-        let answerArr = [];
-        if(updatedInput.length){
-          answerArr = updatedInput.split(",")
+    if (type === "single") {
+      updatedInput = value;
+    } else {
+      let answerArr = [];
+      if (updatedInput.length) {
+        answerArr = updatedInput.split(",");
+      }
+      if (input.checked) {
+        if (answerArr.length) {
+          updatedInput = [...answerArr, value].join(",");
+        } else {
+          updatedInput = value;
         }
-          if (input.checked) {
-            if(answerArr.length){
-              updatedInput = [...answerArr, value].join(",");
-            }else{updatedInput = value}
-          } else {
-            const answerIndex = answerArr.indexOf(value);
-            if (answerIndex > -1) {
-              let replaceArray = [...answerArr];
-              replaceArray.splice(answerIndex, 1);
-              updatedInput = replaceArray.join(",")
-            }
-          }
+      } else {
+        const answerIndex = answerArr.indexOf(value);
+        if (answerIndex > -1) {
+          let replaceArray = [...answerArr];
+          replaceArray.splice(answerIndex, 1);
+          updatedInput = replaceArray.join(",");
+        }
       }
-      userSelect[id] = updatedInput
-      
-      if(skip === true && updatedInput==='No'){
-        //change none of the above to the back-end property
-        userSelect[nextId] = "none of the above"
-        for(let i = 1; i<=2; i++){increment()}
-      }
-      else if(type === "single" && state.questionIndex<(state.dataKeys.length-2)){
-         increment()
-      }
-      dispatch ({
-        type: ADD_USER_INPUT,
-        payload: userSelect
-      });
     }
+    userSelect[id] = updatedInput;
+
+    if (skip === true && updatedInput === "No") {
+      //change none of the above to the back-end property
+      userSelect[nextId] = defaultAnswer;
+      for (let i = 1; i <= 2; i++) {
+        increment();
+      }
+    } else if (
+      type === "single" &&
+      state.questionIndex < state.dataKeys.length - 2
+    ) {
+      increment();
+    }
+    dispatch({
+      type: ADD_USER_INPUT,
+      payload: userSelect,
+    });
+  };
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
@@ -116,4 +119,4 @@ const SurveyState = (props) => {
   );
 };
 
-export default SurveyState
+export default SurveyState;

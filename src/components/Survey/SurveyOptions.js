@@ -11,6 +11,7 @@ export default function SurveyOptions() {
         let nextIdName = dataKeys[(questionIndex + 1)]
         let type = dataArray[idName].question_type
         let skip = dataArray[idName].skip_on_positive_response
+        let nextQuestion_DefaultAnswer = dataArray[nextIdName].default_answer
         
         let answerOptions = dataArray[idName].answer_options.map((option, i) => {
             return (
@@ -24,7 +25,7 @@ export default function SurveyOptions() {
                   value={option}
                   type={type === "single" ? "radio" : "checkbox"}
                   name={idName}
-                  onChange={e => handleUserInput(e, idName, nextIdName, type, skip)}
+                  onChange={e => handleUserInput(e, idName, nextIdName, type, skip, nextQuestion_DefaultAnswer)}
                   checked={(typeof userInput[idName] !== "undefined") ? includes(userInput[idName].split(','), option): false}
                   // checked={userInput}
                 />
