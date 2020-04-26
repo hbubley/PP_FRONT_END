@@ -10,8 +10,11 @@ export default function Buttons() {
         <>
         <p className="mt-4 pl-md-5 pr-4 pr-md-5">
             {questionIndex>=(dataKeys.length-2) ? 
-            <Link to="/results">
-            <button className="btn btn-lg btn-primary mr-2">Submit Responses</button></Link>
+                <Link to="/results">
+                    <button className="btn btn-lg btn-primary mr-2">
+                        Submit Responses
+                    </button>
+                </Link>
             : null}
             <span className="back-next-controls">
                 <button 
@@ -46,4 +49,4 @@ export default function Buttons() {
 //backend add answer when skipped
 //look at next question and set answer with userInput[]
 //Fix submit button! only show up for userInput length = dataKeys length
-//Variable and function naming
+//Variable and function naming (userInput = responses)
