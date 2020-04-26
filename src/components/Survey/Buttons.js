@@ -29,7 +29,7 @@ export default function Buttons() {
                     className="nextBtn btn btn-light" 
                     onClick={increment} 
                     disabled={(typeof userInput[idName] === "undefined" || (Object.keys(userInput).length) === (dataKeys.length-1))}
-                    >
+                >
                         Next &nbsp;
                         <i className="fal fa-arrow-right"></i>
                 </button>
