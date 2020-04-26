@@ -35,6 +35,7 @@ export default (state, action) => {
       return {
         ...state,
         userInput: newUserInput
+        
       }
     case SET_LOADING:
       return {

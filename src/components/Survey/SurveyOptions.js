@@ -8,6 +8,7 @@ export default function SurveyOptions() {
     //replace user checked 
     if(dataArray){ 
         let idName = dataKeys[questionIndex]
+        let nextIdName = dataKeys[(questionIndex + 1)]
         let type = dataArray[idName].question_type
         let skip = dataArray[idName].skip_on_positive_response
         
@@ -23,7 +24,7 @@ export default function SurveyOptions() {
                   value={option}
                   type={type === "single" ? "radio" : "checkbox"}
                   name={idName}
-                  onChange={e => handleUserInput(e, idName, type, skip)}
+                  onChange={e => handleUserInput(e, idName, nextIdName, type, skip)}
                   checked={(typeof userInput[idName] !== "undefined") ? includes(userInput[idName].split(','), option): false}
                   // checked={userInput}
                 />

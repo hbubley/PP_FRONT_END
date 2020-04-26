@@ -49,7 +49,7 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
-  const handleUserInput = async(e, id, type, skip) => {
+  const handleUserInput = async(e, id, nextId, type, skip) => {
       const input = e.target
       const value = input.value     
       let userSelect = {}
@@ -60,6 +60,7 @@ const SurveyState = (props) => {
         
       if (type === "single") {
         updatedInput = value
+
       } else {    
         let answerArr = [];
         if(updatedInput.length){
@@ -80,7 +81,9 @@ const SurveyState = (props) => {
       }
       userSelect[id] = updatedInput
       
-      if(skip === true && input==='No'){
+      if(skip === true && updatedInput==='No'){
+        //change none of the above to the back-end property
+        userSelect[nextId] = "none of the above"
         for(let i = 1; i<=2; i++){increment()}
       }
       else if(type === "single" && state.questionIndex<(state.dataKeys.length-2)){

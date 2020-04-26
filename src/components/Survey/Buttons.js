@@ -9,7 +9,7 @@ export default function Buttons() {
     return (
         <>
         <p className="mt-4 pl-md-5 pr-4 pr-md-5">
-            {questionIndex>=(dataKeys.length-2) ? 
+            {(Object.keys(userInput).length) === (dataKeys.length-1) ? 
                 <Link to="/results">
                     <button className="btn btn-lg btn-primary mr-2">
                         Submit Responses
@@ -28,7 +28,7 @@ export default function Buttons() {
                 <button 
                     className="nextBtn btn btn-light" 
                     onClick={increment} 
-                    disabled={(typeof userInput[idName] === "undefined")}
+                    disabled={(typeof userInput[idName] === "undefined" || (Object.keys(userInput).length) === (dataKeys.length-1))}
                     >
                         Next &nbsp;
                         <i className="fal fa-arrow-right"></i>
@@ -44,9 +44,5 @@ export default function Buttons() {
 //standards are better than better
 
 //HW
-//tie progress bar to userInput Length
-//give some answer for skipped question
 //backend add answer when skipped
-//look at next question and set answer with userInput[]
-//Fix submit button! only show up for userInput length = dataKeys length
 //Variable and function naming (userInput = responses)
