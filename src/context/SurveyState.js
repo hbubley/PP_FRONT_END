@@ -49,7 +49,7 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
-  const handleUserInput = async (e, id, nextId, type, skip, defaultAnswer) => {
+  const handleUserInput = async (e, id, nextId, type, skip, nextQuestion_DefaultAnswer) => {
     const input = e.target;
     const value = input.value;
     let userSelect = {};
@@ -82,7 +82,7 @@ const SurveyState = (props) => {
 
     if (skip === true && updatedInput === "No") {
       //change none of the above to the back-end property
-      userSelect[nextId] = defaultAnswer;
+      userSelect[nextId] = nextQuestion_DefaultAnswer;
       for (let i = 1; i <= 2; i++) {
         increment();
       }
