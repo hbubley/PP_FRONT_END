@@ -54,16 +54,19 @@ const SurveyState = (props) => {
       let updatedInput = (typeof state.userInput[id] !== "undefined") 
         ? state.userInput[id] 
         : ''
+
+        console.log("handleUserInput -> updatedInput", updatedInput)
+        
       if (type === "single") {
         updatedInput = value
-      } else {
-         
-        const answerArr = updatedInput.split(",");
-        console.log("handleUserInput -> answerArr", answerArr)
+      } else {    
+        let answerArr = [];
+        if(updatedInput.length){
+          answerArr = updatedInput.split(",")
+          console.log("handleUserInput -> answerArr", answerArr)
+        }
           if (input.checked) {
-            console.log("Are we actually hitting this. plz werk bitch")
             if(answerArr.length){
-              console.log("render")
               updatedInput = [...answerArr, value].join(",");
             }else{updatedInput = value}
           } else {

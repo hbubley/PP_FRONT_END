@@ -2,7 +2,8 @@ import React, {useContext} from 'react'
 import SurveyContext from '../../context/surveyContext'
 
 export default function SurveyOptions() {
-    const {dataArray, dataKeys, questionIndex, handleUserInput} = useContext(SurveyContext);
+    const {dataArray, dataKeys, questionIndex, handleUserInput, userInput} = useContext(SurveyContext);
+    var _ = require('lodash/core');
 
     if(dataArray){
         let idName = dataKeys[questionIndex]
@@ -21,6 +22,7 @@ export default function SurveyOptions() {
                   type={type === "single" ? "radio" : "checkbox"}
                   name={idName}
                   onChange={e => handleUserInput(e, idName, type, skip)}
+                  // checked={userInput}
                 />
                 &nbsp;
                 <span style={{"display": "inline-block", "verticalAlign": "middle"}}>{option}</span>
