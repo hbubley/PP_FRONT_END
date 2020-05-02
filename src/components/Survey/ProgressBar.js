@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import SurveyContext from "../../context/surveyContext";
 
 export default function ProgressBar() {
-  const { allSurveyKeys, userInput } = useContext(SurveyContext);
+  const { allSurveyKeys, allUserResponses } = useContext(SurveyContext);
   if (allSurveyKeys && allSurveyKeys.length) {
     console.log("USER INPUT LENGTH")
-    let percent = ((Object.keys(userInput).length) / (allSurveyKeys.length-1)) * 100 + "%";
-    console.log("DATAKEYLENGTH", allSurveyKeys.length-1, Object.keys(userInput).length)
+    let percent = ((Object.keys(allUserResponses).length) / (allSurveyKeys.length-1)) * 100 + "%";
+    console.log("DATAKEYLENGTH", allSurveyKeys.length-1, Object.keys(allUserResponses).length)
     return (
       <div className="progress ml-0 ml-md-5 mr-0 mr-md-5">
         <div

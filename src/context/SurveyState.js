@@ -8,7 +8,7 @@ import {
   GET_DATA,
   INCREMENT,
   DECREMENT,
-  ADD_USER_INPUT,
+  ADD_USER_RESPONSE,
   SET_LOADING,
 } from "./types";
 
@@ -19,7 +19,7 @@ const SurveyState = (props) => {
     allSurveyData: "",
     allSurveyKeys: [],
     questionIndex: 0,
-    userInput: {},
+    allUserResponses: {},
     loading: false,
   };
 
@@ -49,12 +49,12 @@ const SurveyState = (props) => {
     });
   };
   //Add User Input
-  const handleUserInput = async (e, id, nextId, type, skip, nextQuestion_DefaultAnswer) => {
+  const handleUserResponses = async (e, id, nextId, type, skip, nextQuestion_DefaultAnswer) => {
     const input = e.target;
     const value = input.value;
     let userSelect = {};
     let updatedInput =
-      typeof state.userInput[id] !== "undefined" ? state.userInput[id] : "";
+      typeof state.allUserResponses[id] !== "undefined" ? state.allUserResponses[id] : "";
 
     if (type === "single") {
       updatedInput = value;
@@ -93,7 +93,7 @@ const SurveyState = (props) => {
       increment();
     }
     dispatch({
-      type: ADD_USER_INPUT,
+      type: ADD_USER_RESPONSE,
       payload: userSelect,
     });
   };
@@ -106,12 +106,12 @@ const SurveyState = (props) => {
         allSurveyData: state.allSurveyData,
         allSurveyKeys: state.allSurveyKeys,
         questionIndex: state.questionIndex,
-        userInput: state.userInput,
+        allUserResponses: state.allUserResponses,
         loading: state.loading,
         getData,
         increment,
         decrement,
-        handleUserInput,
+        handleUserResponses,
       }}
     >
       {props.children}

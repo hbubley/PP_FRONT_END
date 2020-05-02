@@ -2,10 +2,9 @@ import {
   GET_DATA,
   INCREMENT,
   DECREMENT,
-  ADD_USER_INPUT,
+  ADD_USER_RESPONSE,
   SET_LOADING
 } from "./types";
-var _ = require('lodash/core');
 
 export default (state, action) => {
   switch (action.type) {
@@ -26,15 +25,11 @@ export default (state, action) => {
         ...state,
         questionIndex: state.questionIndex - 1,
       };
-    case ADD_USER_INPUT:  
-      const newUserInput = {...state.userInput, ...action.payload}
-      // _.join(array, [separator=',']) for multi input
-      // _.pullAt(array, [indexes]) 
-      // _.pullAllBy(array, values, [iteratee=_.identity])
-      // _.pullAllWith(array, values, [comparator])
+    case ADD_USER_RESPONSE:  
+      const newUserResponse = {...state.allUserResponses, ...action.payload}
       return {
         ...state,
-        userInput: newUserInput
+        allUserResponses: newUserResponse
         
       }
     case SET_LOADING:
