@@ -16,8 +16,8 @@ import {
 
 const SurveyState = (props) => {
   const initialState = {
-    dataArray: "",
-    dataKeys: [],
+    allSurveyData: "",
+    allSurveyKeys: [],
     questionIndex: 0,
     userInput: {},
     loading: false,
@@ -88,7 +88,7 @@ const SurveyState = (props) => {
       }
     } else if (
       type === "single" &&
-      state.questionIndex < state.dataKeys.length - 2
+      state.questionIndex < state.allSurveyKeys.length - 2
     ) {
       increment();
     }
@@ -103,8 +103,8 @@ const SurveyState = (props) => {
   return (
     <SurveyContext.Provider
       value={{
-        dataArray: state.dataArray,
-        dataKeys: state.dataKeys,
+        allSurveyData: state.allSurveyData,
+        allSurveyKeys: state.allSurveyKeys,
         questionIndex: state.questionIndex,
         userInput: state.userInput,
         loading: state.loading,

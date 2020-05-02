@@ -3,13 +3,13 @@ import {Link} from "react-router-dom"
 import SurveyContext from '../../context/surveyContext'
 
 export default function Buttons() {
-    const {increment, decrement, questionIndex, userInput, loading, dataKeys} = useContext(SurveyContext)
+    const {increment, decrement, questionIndex, userInput, loading, allSurveyKeys} = useContext(SurveyContext)
     if(loading === false){
-        let idName = dataKeys[questionIndex]
+        let idName = allSurveyKeys[questionIndex]
     return (
         <>
         <p className="mt-4 pl-md-5 pr-4 pr-md-5">
-            {(Object.keys(userInput).length) === (dataKeys.length-1) ? 
+            {(Object.keys(userInput).length) === (allSurveyKeys.length-1) ? 
                 <Link to="/results">
                     <button className="btn btn-lg btn-primary mr-2">
                         Submit Responses
@@ -28,7 +28,7 @@ export default function Buttons() {
                 <button 
                     className="nextBtn btn btn-light" 
                     onClick={increment} 
-                    disabled={(typeof userInput[idName] === "undefined" || (Object.keys(userInput).length) === (dataKeys.length-1))}
+                    disabled={(typeof userInput[idName] === "undefined" || (Object.keys(userInput).length) === (allSurveyKeys.length-1))}
                 >
                         Next &nbsp;
                         <i className="fal fa-arrow-right"></i>

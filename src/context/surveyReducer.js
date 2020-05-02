@@ -12,8 +12,8 @@ export default (state, action) => {
     case GET_DATA:
       return {
         ...state,
-        dataArray: action.payload[0],
-        dataKeys: action.payload[1],
+        allSurveyData: action.payload[0],
+        allSurveyKeys: action.payload[1],
         loading: false,
       };
     case INCREMENT:

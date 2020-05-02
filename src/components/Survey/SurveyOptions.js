@@ -2,18 +2,18 @@ import React, {useContext} from 'react'
 import SurveyContext from '../../context/surveyContext'
 
 export default function SurveyOptions() {
-    const {dataArray, dataKeys, questionIndex, handleUserInput, userInput} = useContext(SurveyContext);
+    const {allSurveyData, allSurveyKeys, questionIndex, handleUserInput, userInput} = useContext(SurveyContext);
     var _ = require('lodash/core');
     var includes = require('lodash.includes');
     //replace user checked 
-    if(dataArray){ 
-        let idName = dataKeys[questionIndex]
-        let nextIdName = dataKeys[(questionIndex + 1)]
-        let type = dataArray[idName].question_type
-        let skip = dataArray[idName].skip_on_positive_response
-        let nextQuestion_DefaultAnswer = dataArray[nextIdName].default_answer
+    if(allSurveyData){ 
+        let idName = allSurveyKeys[questionIndex]
+        let nextIdName = allSurveyKeys[(questionIndex + 1)]
+        let type = allSurveyData[idName].question_type
+        let skip = allSurveyData[idName].skip_on_positive_response
+        let nextQuestion_DefaultAnswer = allSurveyData[nextIdName].default_answer
         
-        let answerOptions = dataArray[idName].answer_options.map((option, i) => {
+        let answerOptions = allSurveyData[idName].answer_options.map((option, i) => {
             return (
               <label
                 className="answer btn btn-lg btn-light text-primary mr-2"
