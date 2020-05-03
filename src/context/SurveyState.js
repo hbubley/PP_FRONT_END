@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import axios from "axios";
 import { getAllQuestions } from "../utility/api-helper";
 import SurveyContext from "./surveyContext";
 import SurveyReducer from "./surveyReducer";
@@ -11,9 +10,6 @@ import {
   ADD_USER_RESPONSE,
   SET_LOADING,
 } from "./types";
-
-//switch userChecked to userArray
-
 const SurveyState = (props) => {
   const initialState = {
     allSurveyData: "",
@@ -22,7 +18,6 @@ const SurveyState = (props) => {
     allUserResponses: {},
     loading: false,
   };
-
   const [state, dispatch] = useReducer(SurveyReducer, initialState);
   //Get Data
   const getData = async () => {
@@ -36,26 +31,31 @@ const SurveyState = (props) => {
       payload: [res_data, keyArray],
     });
   };
-  //Increment
   const increment = async () => {
     dispatch({
       type: INCREMENT,
     });
   };
-  //Decrement
   const decrement = async () => {
     dispatch({
       type: DECREMENT,
     });
   };
-  //Add User Input
-  const handleUserResponses = async (e, id, nextId, type, skip, nextQuestion_DefaultAnswer) => {
+  const handleUserResponses = async (
+    e,
+    id,
+    nextId,
+    type,
+    skip,
+    nextQuestion_DefaultAnswer
+  ) => {
     const input = e.target;
     const value = input.value;
     let userSelect = {};
     let updatedInput =
-      typeof state.allUserResponses[id] !== "undefined" ? state.allUserResponses[id] : "";
-
+      typeof state.allUserResponses[id] !== "undefined"
+        ? state.allUserResponses[id]
+        : "";
     if (type === "single") {
       updatedInput = value;
     } else {
@@ -79,7 +79,6 @@ const SurveyState = (props) => {
       }
     }
     userSelect[id] = updatedInput;
-
     if (skip === true && updatedInput === "No") {
       //change none of the above to the back-end property
       userSelect[nextId] = nextQuestion_DefaultAnswer;
@@ -97,7 +96,6 @@ const SurveyState = (props) => {
       payload: userSelect,
     });
   };
-  //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   return (
