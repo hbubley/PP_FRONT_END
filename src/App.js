@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import "./App.css";
 import SurveyContainer from "./components/Survey/SurveyContainer";
 import Refer from "./components/Refer/Refer";
 import Results from "./components/Results/Results";
